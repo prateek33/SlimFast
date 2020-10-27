@@ -40,6 +40,12 @@ public class UploadJarsMojo extends AbstractMojo {
   @Parameter(property = "slimfast.fileUploader", alias = "fileUploader", defaultValue = DEFAULT_UPLOADER)
   private String fileUploaderType;
 
+  @Parameter(property = "slimfast.s3.endpoint", defaultValue = "${s3.endpoint}", required = true)
+  private String s3Endpoint;
+
+  @Parameter(property = "slimfast.s3.region", defaultValue = "${s3.region}", required = true)
+  private String s3Region;
+
   @Parameter(property = "slimfast.s3.bucket", defaultValue = "${s3.bucket}", required = true)
   private String s3Bucket;
 
@@ -126,6 +132,8 @@ public class UploadJarsMojo extends AbstractMojo {
   private UploadConfiguration buildConfiguration(Path prefix) {
     return new UploadConfiguration(
         prefix,
+        s3Endpoint,
+        s3Region,
         s3Bucket,
         s3ArtifactRoot,
         s3AccessKey,

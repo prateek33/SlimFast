@@ -4,6 +4,8 @@ import java.nio.file.Path;
 
 public class UploadConfiguration {
   private final Path prefix;
+  private final String s3Endpoint;
+  private final String s3Region;
   private final String s3Bucket;
   private final String s3ArtifactRoot;
   private final String s3AccessKey;
@@ -12,6 +14,8 @@ public class UploadConfiguration {
   private final boolean allowUnresolvedSnapshots;
 
   public UploadConfiguration(Path prefix,
+                             String s3Endpoint,
+                             String s3Region,
                              String s3Bucket,
                              String s3ArtifactRoot,
                              String s3AccessKey,
@@ -19,6 +23,8 @@ public class UploadConfiguration {
                              Path outputFile,
                              boolean allowUnresolvedSnapshots) {
     this.prefix = prefix;
+    this.s3Endpoint = s3Endpoint;
+    this.s3Region = s3Region;
     this.s3Bucket = s3Bucket;
     this.s3ArtifactRoot = s3ArtifactRoot;
     this.s3AccessKey = s3AccessKey;
@@ -29,6 +35,14 @@ public class UploadConfiguration {
 
   public Path getPrefix() {
     return prefix;
+  }
+
+  public String getS3Endpoint() {
+    return s3Endpoint;
+  }
+
+  public String getS3Region() {
+    return s3Region;
   }
 
   public String getS3Bucket() {

@@ -28,6 +28,12 @@ public class DownloadJarsMojo extends AbstractMojo {
   @Parameter(property = "slimfast.fileDownloader", alias = "fileDownloader", defaultValue = "com.hubspot.maven.plugins.slimfast.DefaultFileDownloader")
   private String fileDownloaderType;
 
+  @Parameter(property = "slimfast.s3.endpoint", defaultValue = "${s3.endpoint}", required = true)
+  private String s3Endpoint;
+
+  @Parameter(property = "slimfast.s3.region", defaultValue = "${s3.region}", required = true)
+  private String s3Region;
+
   @Parameter(property = "slimfast.s3.accessKey", defaultValue = "${s3.access.key}", required = true)
   private String s3AccessKey;
 
@@ -108,6 +114,8 @@ public class DownloadJarsMojo extends AbstractMojo {
         Paths.get(prefix),
         Paths.get(cacheDirectory),
         Paths.get(outputDirectory),
+        s3Endpoint,
+        s3Region,
         s3AccessKey,
         s3SecretKey
     );
