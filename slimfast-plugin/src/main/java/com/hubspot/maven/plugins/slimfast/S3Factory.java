@@ -21,9 +21,10 @@ public class S3Factory {
         .withCredentials(new AWSStaticCredentialsProvider(credentials))
         .withClientConfiguration(
             new ClientConfiguration()
-                .withConnectionTimeout(2_000)
-                .withRequestTimeout(5_000)
+                //.withConnectionTimeout(2_000)
+                //.withRequestTimeout(5_000)
                 .withMaxErrorRetry(5)
+                    .withValidateAfterInactivityMillis(200)
         )
         .build();
   }

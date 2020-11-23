@@ -47,6 +47,7 @@ public class DefaultFileUploader extends BaseFileUploader {
       if (e instanceof AmazonServiceException && ((AmazonServiceException) e).getStatusCode() == 404) {
         return false;
       } else {
+        log.error(e);
         throw new MojoFailureException("Error getting object metadata for key " + key, e);
       }
     }
